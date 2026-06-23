@@ -110,7 +110,7 @@ em { font-style: italic; }
   height: 76px;
   gap: 24px;
 }
-.nav-brand img { height: 34px; width: auto; }
+.nav-brand img { height: 48px; width: auto; }
 .nav-links {
   display: flex;
   align-items: center;
@@ -322,7 +322,7 @@ em { font-style: italic; }
   border-bottom: 1px solid rgba(255,255,255,0.1);
   margin-bottom: 28px;
 }
-.footer-brand img { height: 24px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; margin-bottom: 12px; }
+.footer-brand img { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; margin-bottom: 12px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
 .footer-coords { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); }
 .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--color-white); margin-bottom: 14px; }
