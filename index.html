@@ -8,21 +8,22 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --color-navy:      #0B1E3D;
-      --color-navy-deep: #061226;
-      --color-navy-mid:  #15336B;
-      --color-white:     #FFFFFF;
-      --color-fog:       #F4F6FA;
-      --color-cloud:     #E7EBF2;
-      --color-slate:     #4B5567;
-      --color-mist:      #8893A6;
-      --color-gold:      #F2B632;
-      --color-gold-deep: #D89A18;
+      --color-navy:      #23282F;
+      --color-navy-deep: #000000;
+      --color-navy-mid:  #444B55;
+      --color-white:     #F4F1EB;
+      --color-fog:       #F4F1EB;
+      --color-cloud:     #E8E2D5;
+      --color-slate:     #444B55;
+      --color-mist:      #B8BEC7;
+      --color-gold:      #D08856;
+      --color-gold-deep: #A86635;
 
+      --font-display: "Instrument Serif", Georgia, serif;
       --font-sans: "Geist", system-ui, -apple-system, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 
@@ -72,7 +73,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.92);
+      background: rgba(232,226,213,0.88);
       backdrop-filter: saturate(140%) blur(14px);
       -webkit-backdrop-filter: saturate(140%) blur(14px);
       border-bottom: 1px solid var(--color-cloud);
@@ -156,8 +157,9 @@
     .hero-content { padding-bottom: clamp(64px, 9vw, 104px); }
     .hero-eyebrow { margin-bottom: 28px; }
     .hero-headline {
-      font-size: clamp(40px, 5.6vw, 72px);
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 400;
       line-height: 1.02;
       letter-spacing: -0.02em;
       margin-bottom: 28px;
@@ -187,11 +189,57 @@
       position: relative;
       box-shadow: var(--shadow-hover);
     }
-    .hero-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-img-wrap img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      animation: hero-pan 18s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
     .hero-img-wrap::after {
       content: "";
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(11,30,61,0) 50%, rgba(6,18,38,0.55) 100%);
+      background: linear-gradient(180deg, rgba(35,40,47,0) 50%, rgba(0,0,0,0.55) 100%);
+    }
+    @keyframes hero-pan {
+      0%   { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.18) translate(-2.5%, -2%); }
+    }
+
+    /* Moving banner */
+    .marquee {
+      background: var(--color-navy-deep);
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 32s linear infinite;
+    }
+    .marquee-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      white-space: nowrap;
+    }
+    .marquee-track span::after {
+      content: "—";
+      color: var(--color-gold);
+      margin-left: 14px;
+    }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img-wrap img { animation: none; }
+      .marquee-track { animation: none; }
     }
 
     .btn {
@@ -254,8 +302,9 @@
     }
     .positioning-rule { width: 36px; height: 3px; background: var(--color-gold); margin-top: 14px; border-radius: 2px; }
     .positioning-text {
+      font-family: var(--font-display);
       font-size: clamp(22px, 2.8vw, 30px);
-      font-weight: 600;
+      font-weight: 400;
       line-height: 1.4;
       letter-spacing: -0.01em;
       color: var(--color-navy);
@@ -266,8 +315,9 @@
     .section-header { margin-bottom: 48px; max-width: 70ch; }
     .section-header .eyebrow { margin-bottom: 16px; }
     .section-header h2 {
-      font-size: clamp(30px, 3.6vw, 46px);
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
       letter-spacing: -0.02em;
       color: var(--color-navy);
       line-height: 1.08;
@@ -330,11 +380,20 @@
     .advisory-card-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gold-deep); font-weight: 600; }
     .advisory-card h3 { font-size: 18px; font-weight: 800; color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.25; }
     .advisory-card p { font-size: 14px; color: var(--color-slate); line-height: 1.6; flex: 1; }
+    .advisory-card-sub { font-size: 14px; font-weight: 600; color: var(--color-gold-deep); line-height: 1.4; flex: none; }
+    .advisory-card-graphic { padding: 0; }
+    .cost-graphic { width: 100%; height: 100%; display: block; }
+    .advisory-card.advisory-card-wide { grid-column: 1 / -1; }
+    .advisory-card-wide .advisory-card-body { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: start; }
+    .advisory-card-wide .advisory-card-col { display: flex; flex-direction: column; gap: 12px; }
+    @media (max-width: 900px) {
+      .advisory-card-wide .advisory-card-body { grid-template-columns: 1fr; }
+    }
 
     /* How we work */
     .how { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-navy); color: var(--color-white); }
     .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
-    .how-left h2 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; }
+    .how-left h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; }
     .how-left .eyebrow { margin-bottom: 18px; }
     .how-left p { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.6; margin-bottom: 32px; max-width: 50ch; }
     .how-steps { display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.14); }
@@ -347,7 +406,7 @@
     .how-principles .eyebrow { margin-bottom: 22px; }
     .principle { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
     .principle:last-child { border-bottom: none; }
-    .principle-quote { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.4; color: var(--color-white); }
+    .principle-quote { font-family: var(--font-display); font-size: 18px; font-weight: 400; font-style: italic; letter-spacing: -0.01em; line-height: 1.4; color: var(--color-white); }
 
     /* Insights */
     .insights { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-white); }
@@ -364,7 +423,7 @@
     }
     .insight-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); background: var(--color-white); }
     .insight-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mist); }
-    .insight-card h3 { font-size: 20px; font-weight: 700; color: var(--color-navy); line-height: 1.25; letter-spacing: -0.01em; }
+    .insight-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--color-navy); line-height: 1.2; letter-spacing: -0.01em; }
     .insight-card p { font-size: 14px; color: var(--color-slate); line-height: 1.55; }
     .insight-arrow { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold-deep); margin-top: auto; padding-top: 6px; }
 
@@ -386,7 +445,7 @@
       background: radial-gradient(circle, rgba(242,182,50,0.14), transparent 70%);
     }
     .cta-strip .eyebrow { justify-content: center; margin-bottom: 24px; }
-    .cta-strip h2 { font-size: clamp(34px, 5vw, 58px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 22px; position: relative; }
+    .cta-strip h2 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); font-weight: 400; letter-spacing: -0.025em; line-height: 1.0; margin-bottom: 24px; position: relative; }
     .cta-strip h2 .accent { color: var(--color-gold); }
     .cta-strip p { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 46ch; margin: 0 auto 36px; line-height: 1.55; position: relative; }
 
@@ -505,6 +564,14 @@
       </div>
     </div>
   </section>
+
+  <!-- Moving banner -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Strategy</span><span>Modernization</span><span>Responsible AI</span><span>Zero-Trust</span><span>Cybersecurity</span><span>IV&amp;V</span><span>AI Governance</span><span>Data Readiness</span><span>Cost Optimization</span><span>Change Management</span>
+      <span>Strategy</span><span>Modernization</span><span>Responsible AI</span><span>Zero-Trust</span><span>Cybersecurity</span><span>IV&amp;V</span><span>AI Governance</span><span>Data Readiness</span><span>Cost Optimization</span><span>Change Management</span>
+    </div>
+  </div>
 
   <!-- Stat strip -->
   <div class="stat-strip">
@@ -637,6 +704,36 @@
             <div class="advisory-card-num">06 — Change Management</div>
             <h3>Stakeholder Alignment &amp; Change Management</h3>
             <p>Structured workshops and programs that build executive consensus, prepare your workforce, and sustain change across complex agency environments.</p>
+          </div>
+        </article>
+
+        <!-- 07 Cost Optimization -->
+        <article class="advisory-card advisory-card-wide">
+          <div class="advisory-card-img advisory-card-graphic">
+            <svg viewBox="0 0 1200 176" preserveAspectRatio="none" class="cost-graphic">
+              <rect x="0" y="0" width="1200" height="176" fill="var(--color-navy)"/>
+              <polyline points="40,140 200,118 360,128 520,84 680,96 840,52 1000,40 1160,30" fill="none" stroke="var(--color-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="1160" cy="30" r="6" fill="var(--color-gold)"/>
+              <g stroke="rgba(244,241,235,.18)" stroke-width="1">
+                <line x1="0" y1="44" x2="1200" y2="44"/>
+                <line x1="0" y1="88" x2="1200" y2="88"/>
+                <line x1="0" y1="132" x2="1200" y2="132"/>
+              </g>
+            </svg>
+          </div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-col">
+              <div class="advisory-card-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div class="advisory-card-num">07 — Cost Optimization</div>
+              <h3>Cost Optimization</h3>
+              <p class="advisory-card-sub">Recover budget from existing technology contracts and fund modernization without new funding requests.</p>
+            </div>
+            <div class="advisory-card-col">
+              <p>Most agencies are overpaying for software they already own. Over-licensed platforms, inactive users, misaligned contract tiers, and fragmented procurement across divisions quietly drain technology budgets year after year while modernization waits for funding that rarely arrives on schedule. The money is already in the portfolio. It's just not visible.</p>
+              <p>We validate license agreements against actual usage, identify unnecessary spend across your major software and cloud contracts, and build the case for renegotiation with vendors who count on the status quo. We deliver specific savings targets, a sequenced optimization plan, and a reinvestment path that lets you fund your next modernization priority without new funding requests.</p>
+            </div>
           </div>
         </article>
 
