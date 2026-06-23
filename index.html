@@ -381,14 +381,6 @@
     .advisory-card h3 { font-size: 18px; font-weight: 800; color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.25; }
     .advisory-card p { font-size: 14px; color: var(--color-slate); line-height: 1.6; flex: 1; }
     .advisory-card-sub { font-size: 14px; font-weight: 600; color: var(--color-gold-deep); line-height: 1.4; flex: none; }
-    .advisory-card-graphic { padding: 0; }
-    .cost-graphic { width: 100%; height: 100%; display: block; }
-    .advisory-card.advisory-card-wide { grid-column: 1 / -1; }
-    .advisory-card-wide .advisory-card-body { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: start; }
-    .advisory-card-wide .advisory-card-col { display: flex; flex-direction: column; gap: 12px; }
-    @media (max-width: 900px) {
-      .advisory-card-wide .advisory-card-body { grid-template-columns: 1fr; }
-    }
 
     /* How we work */
     .how { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-navy); color: var(--color-white); }
@@ -708,32 +700,17 @@
         </article>
 
         <!-- 07 Cost Optimization -->
-        <article class="advisory-card advisory-card-wide">
-          <div class="advisory-card-img advisory-card-graphic">
-            <svg viewBox="0 0 1200 176" preserveAspectRatio="none" class="cost-graphic">
-              <rect x="0" y="0" width="1200" height="176" fill="var(--color-navy)"/>
-              <polyline points="40,140 200,118 360,128 520,84 680,96 840,52 1000,40 1160,30" fill="none" stroke="var(--color-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="1160" cy="30" r="6" fill="var(--color-gold)"/>
-              <g stroke="rgba(244,241,235,.18)" stroke-width="1">
-                <line x1="0" y1="44" x2="1200" y2="44"/>
-                <line x1="0" y1="88" x2="1200" y2="88"/>
-                <line x1="0" y1="132" x2="1200" y2="132"/>
-              </g>
-            </svg>
-          </div>
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/cost-optimization.png" alt="Advisor presenting a cost optimization analysis in a meeting room" loading="lazy" /></div>
           <div class="advisory-card-body">
-            <div class="advisory-card-col">
-              <div class="advisory-card-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-              </div>
-              <div class="advisory-card-num">07 — Cost Optimization</div>
-              <h3>Cost Optimization</h3>
-              <p class="advisory-card-sub">Recover budget from existing technology contracts and fund modernization without new funding requests.</p>
+            <div class="advisory-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             </div>
-            <div class="advisory-card-col">
-              <p>Most agencies are overpaying for software they already own. Over-licensed platforms, inactive users, misaligned contract tiers, and fragmented procurement across divisions quietly drain technology budgets year after year while modernization waits for funding that rarely arrives on schedule. The money is already in the portfolio. It's just not visible.</p>
+            <div class="advisory-card-num">07 — Cost Optimization</div>
+            <h3>Cost Optimization</h3>
+            <p class="advisory-card-sub">Recover budget from existing technology contracts and fund modernization without new funding requests.</p>
+            <p>Most agencies are overpaying for software they already own. Over-licensed platforms, inactive users, misaligned contract tiers, and fragmented procurement across divisions quietly drain technology budgets year after year while modernization waits for funding that rarely arrives on schedule. The money is already in the portfolio. It's just not visible.</p>
               <p>We validate license agreements against actual usage, identify unnecessary spend across your major software and cloud contracts, and build the case for renegotiation with vendors who count on the status quo. We deliver specific savings targets, a sequenced optimization plan, and a reinvestment path that lets you fund your next modernization priority without new funding requests.</p>
-            </div>
           </div>
         </article>
 
