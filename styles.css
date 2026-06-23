@@ -23,6 +23,15 @@
   --shadow-card:  0 1px 0 rgba(0,0,0,.04), 0 18px 40px -20px rgba(6,18,38,.25);
   --shadow-hover: 0 2px 0 rgba(0,0,0,.06), 0 30px 60px -28px rgba(6,18,38,.35);
 
+  /* Legacy aliases — some page templates reference these names directly */
+  --color-paper:     var(--color-white);
+  --color-bone:      var(--color-cloud);
+  --color-black:     var(--color-navy);
+  --color-graphite:  var(--color-slate);
+  --color-edge:      var(--color-gold);
+  --color-edge-deep: var(--color-gold-deep);
+  --rule: 1px solid var(--color-cloud);
+
   --container: 1280px;
   --gutter: clamp(20px, 5vw, 72px);
 }
