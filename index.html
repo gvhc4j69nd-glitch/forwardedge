@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ForwardEdge Advisory — A women-owned, minority-led, AI-native public sector advisory firm. Strategy, modernization, and responsible AI as one practice." />
+  <title>ForwardEdge Advisory — Forward Intelligence for the Public Sector</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-navy:      #0B1E3D;
+      --color-navy-deep: #061226;
+      --color-navy-mid:  #15336B;
+      --color-white:     #FFFFFF;
+      --color-fog:       #F4F6FA;
+      --color-cloud:     #E7EBF2;
+      --color-slate:     #4B5567;
+      --color-mist:      #8893A6;
+      --color-gold:      #F2B632;
+      --color-gold-deep: #D89A18;
+
+      --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 14px;
+      --radius-pill: 9999px;
+
+      --shadow-card: 0 1px 0 rgba(0,0,0,.04), 0 18px 40px -20px rgba(6,18,38,.25);
+      --shadow-hover: 0 2px 0 rgba(0,0,0,.06), 0 30px 60px -28px rgba(6,18,38,.35);
+
+      --container: 1280px;
+      --gutter: clamp(20px, 5vw, 72px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--color-white);
+      color: var(--color-navy);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--color-gold); color: var(--color-navy-deep); }
+
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold-deep);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-gold); }
+    .eyebrow.on-dark { color: var(--color-gold); }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border-bottom: 1px solid var(--color-cloud);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 24px;
+    }
+    .nav-logo img { height: 34px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-slate);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: var(--color-navy); background: var(--color-fog); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--color-navy);
+      color: var(--color-white);
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--color-navy-mid); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--color-navy); border-radius: 2px; }
+
+    .brand-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s ease;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(165deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+      color: var(--color-white);
+      overflow: hidden;
+      padding: clamp(72px, 9vw, 120px) 0 0;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242,182,50,0.18), transparent 70%);
+    }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+    .hero-content { padding-bottom: clamp(64px, 9vw, 104px); }
+    .hero-eyebrow { margin-bottom: 28px; }
+    .hero-headline {
+      font-size: clamp(40px, 5.6vw, 72px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      max-width: 16ch;
+    }
+    .hero-headline .accent { color: var(--color-gold); }
+    .hero-lead {
+      font-size: clamp(16px, 1.5vw, 19px);
+      line-height: 1.55;
+      color: rgba(255,255,255,0.78);
+      max-width: 48ch;
+      margin-bottom: 32px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-note {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .hero-img-wrap {
+      align-self: stretch;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      min-height: 460px;
+      position: relative;
+      box-shadow: var(--shadow-hover);
+    }
+    .hero-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-img-wrap::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(11,30,61,0) 50%, rgba(6,18,38,0.55) 100%);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 26px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      transition: all .15s;
+      text-decoration: none;
+    }
+    .btn-gold { background: var(--color-gold); color: var(--color-navy-deep); }
+    .btn-gold:hover { background: var(--color-gold-deep); transform: translateY(-1px); }
+    .btn-outline-light { background: transparent; color: var(--color-white); border: 1.5px solid rgba(255,255,255,0.35); }
+    .btn-outline-light:hover { border-color: var(--color-white); }
+    .btn-navy { background: var(--color-navy); color: var(--color-white); }
+    .btn-navy:hover { background: var(--color-navy-mid); transform: translateY(-1px); }
+    .btn-outline-dark { background: transparent; color: var(--color-navy); border: 1.5px solid var(--color-cloud); }
+    .btn-outline-dark:hover { border-color: var(--color-navy); }
+    .btn-arrow { font-size: 16px; line-height: 1; }
+
+    /* Stat strip */
+    .stat-strip {
+      background: var(--color-navy-deep);
+      padding: 28px 0;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-grid .stat-num {
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 800;
+      color: var(--color-gold);
+      letter-spacing: -0.02em;
+    }
+    .stat-grid .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 6px;
+    }
+
+    /* Positioning */
+    .positioning { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-fog); }
+    .positioning-inner {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .positioning-rule { width: 36px; height: 3px; background: var(--color-gold); margin-top: 14px; border-radius: 2px; }
+    .positioning-text {
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: var(--color-navy);
+    }
+    .positioning-text strong { color: var(--color-navy); font-weight: 800; }
+
+    /* Section headers */
+    .section-header { margin-bottom: 48px; max-width: 70ch; }
+    .section-header .eyebrow { margin-bottom: 16px; }
+    .section-header h2 {
+      font-size: clamp(30px, 3.6vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-navy);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+    .section-header p { font-size: 16px; color: var(--color-slate); max-width: 56ch; }
+    .section-header.split { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+
+    /* Who we serve */
+    .serve { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-white); }
+    .serve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .serve-card {
+      background: var(--color-fog);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .serve-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .serve-card-img { height: 230px; overflow: hidden; }
+    .serve-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+    .serve-card:hover .serve-card-img img { transform: scale(1.05); }
+    .serve-card-body { padding: clamp(26px, 3vw, 36px); display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .serve-icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-navy);
+      border-radius: var(--radius-sm);
+    }
+    .serve-icon svg { width: 24px; height: 24px; stroke: var(--color-gold); fill: none; stroke-width: 1.7; }
+    .serve-card h3 { font-size: 20px; font-weight: 800; color: var(--color-navy); letter-spacing: -0.01em; }
+    .serve-card p { font-size: 15px; color: var(--color-slate); line-height: 1.6; max-width: 44ch; }
+    .serve-tag { margin-top: auto; padding-top: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mist); }
+
+    /* Advisory */
+    .advisory { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-fog); }
+    .advisory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .advisory-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .advisory-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .advisory-card-img { height: 176px; overflow: hidden; position: relative; }
+    .advisory-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+    .advisory-card:hover .advisory-card-img img { transform: scale(1.06); }
+    .advisory-card-body { padding: 24px 26px 30px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .advisory-card-icon {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-fog);
+      border-radius: var(--radius-sm);
+    }
+    .advisory-card-icon svg { width: 22px; height: 22px; stroke: var(--color-navy); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .advisory-card-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gold-deep); font-weight: 600; }
+    .advisory-card h3 { font-size: 18px; font-weight: 800; color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.25; }
+    .advisory-card p { font-size: 14px; color: var(--color-slate); line-height: 1.6; flex: 1; }
+
+    /* How we work */
+    .how { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-navy); color: var(--color-white); }
+    .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+    .how-left h2 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; }
+    .how-left .eyebrow { margin-bottom: 18px; }
+    .how-left p { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.6; margin-bottom: 32px; max-width: 50ch; }
+    .how-steps { display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.14); }
+    .how-step { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+    .how-step-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--color-gold); padding-top: 2px; }
+    .how-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .how-step p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5; margin: 0; }
+    .how-right { padding-top: 8px; }
+    .how-principles { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: 32px; }
+    .how-principles .eyebrow { margin-bottom: 22px; }
+    .principle { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .principle:last-child { border-bottom: none; }
+    .principle-quote { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.4; color: var(--color-white); }
+
+    /* Insights */
+    .insights { padding: clamp(72px, 9vw, 112px) 0; background: var(--color-white); }
+    .insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .insight-card {
+      background: var(--color-fog);
+      border-radius: var(--radius-md);
+      padding: 28px 26px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: box-shadow .2s, transform .2s;
+      cursor: pointer;
+    }
+    .insight-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); background: var(--color-white); }
+    .insight-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mist); }
+    .insight-card h3 { font-size: 20px; font-weight: 700; color: var(--color-navy); line-height: 1.25; letter-spacing: -0.01em; }
+    .insight-card p { font-size: 14px; color: var(--color-slate); line-height: 1.55; }
+    .insight-arrow { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold-deep); margin-top: auto; padding-top: 6px; }
+
+    /* CTA strip */
+    .cta-strip {
+      padding: clamp(72px, 10vw, 120px) 0;
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+      text-align: center;
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-strip::before {
+      content: "";
+      position: absolute; bottom: -160px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242,182,50,0.14), transparent 70%);
+    }
+    .cta-strip .eyebrow { justify-content: center; margin-bottom: 24px; }
+    .cta-strip h2 { font-size: clamp(34px, 5vw, 58px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 22px; position: relative; }
+    .cta-strip h2 .accent { color: var(--color-gold); }
+    .cta-strip p { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 46ch; margin: 0 auto 36px; line-height: 1.55; position: relative; }
+
+    /* Footer */
+    .footer { padding: clamp(48px, 5vw, 72px) 0 clamp(24px, 3vw, 40px); background: var(--color-navy-deep); color: var(--color-white); }
+    .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+    .footer-logo img { height: 24px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 12px; }
+    .footer-nav { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .footer-nav a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color .15s; }
+    .footer-nav a:hover { color: var(--color-gold); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .footer-copy { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+    .footer-coord { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: rgba(255,255,255,0.18); }
+
+    /* Mobile nav overlay */
+    .mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: var(--color-navy); padding: 20px var(--gutter) 40px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .mobile-nav ul { list-style: none; display: flex; flex-direction: column; flex: 1; }
+    .mobile-nav ul li a { display: block; font-size: 26px; font-weight: 700; color: var(--color-white); padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .mobile-nav-cta { margin-top: 32px; }
+    .close-btn { background: none; border: none; cursor: pointer; font-size: 24px; color: var(--color-white); line-height: 1; }
+
+    @media (max-width: 1000px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img-wrap { display: none; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .advisory-grid { grid-template-columns: 1fr 1fr; }
+      .insights-grid { grid-template-columns: 1fr 1fr; }
+      .how-inner { grid-template-columns: 1fr; }
+      .positioning-inner { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 640px) {
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .serve-grid { grid-template-columns: 1fr; }
+      .advisory-grid { grid-template-columns: 1fr; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .section-header.split { flex-direction: column; align-items: flex-start; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-nav { align-items: flex-start; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="ForwardEdge — Home">
+          <img src="assets/fe-lockup-black.png" alt="ForwardEdge" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#advisory">Our Advisory Areas</a></li>
+          <li><a href="#how">How We Work</a></li>
+          <li><a href="#insights">Insights</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Start a Conversation <span class="btn-arrow">↗</span></a>
+        <button class="nav-hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-nav-top">
+      <a href="/" class="nav-logo">
+        <img src="assets/fe-lockup-paper.png" alt="ForwardEdge" style="height:30px; filter:brightness(0) invert(1);" />
+      </a>
+      <button class="close-btn" id="closeBtn" aria-label="Close menu">✕</button>
+    </div>
+    <ul>
+      <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+      <li><a href="#advisory" onclick="closeMobileNav()">Our Advisory Areas</a></li>
+      <li><a href="#how" onclick="closeMobileNav()">How We Work</a></li>
+      <li><a href="#insights" onclick="closeMobileNav()">Insights</a></li>
+    </ul>
+    <div class="mobile-nav-cta">
+      <a href="#contact" class="btn btn-gold" onclick="closeMobileNav()" style="font-size:15px; padding:14px 24px;">
+        Start a Conversation <span class="btn-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow on-dark hero-eyebrow"><span class="dot"></span>PUBLIC SECTOR ADVISORY &nbsp;·&nbsp; ATLANTA, GA</div>
+          <h1 class="hero-headline">Forward intelligence <span class="accent">for the public sector.</span></h1>
+          <p class="hero-lead">
+            ForwardEdge is a boutique technology advisory firm helping public sector leaders navigate digital transformation, establish AI governance, and fortify cybersecurity — with senior-level guidance at every step.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-gold">Start a Conversation <span class="btn-arrow">↗</span></a>
+            <a href="#advisory" class="btn btn-outline-light">Our Advisory Areas</a>
+          </div>
+          <p class="hero-note">Women-owned · Minority-led · AI-native</p>
+        </div>
+        <div class="hero-img-wrap">
+          <img src="assets/img/hero.jpg" alt="Government architecture" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat strip -->
+  <div class="stat-strip">
+    <div class="container">
+      <div class="stat-grid">
+        <div><div class="stat-num">6</div><div class="stat-label">Advisory Practices</div></div>
+        <div><div class="stat-num">State · Federal</div><div class="stat-label">Agencies Served</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Independent, Vendor-Free</div></div>
+        <div><div class="stat-num">WOSB · MBE</div><div class="stat-label">Certifications</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Positioning -->
+  <section class="positioning" id="about">
+    <div class="container">
+      <div class="positioning-inner">
+        <div>
+          <div class="eyebrow">OUR APPROACH</div>
+          <div class="positioning-rule"></div>
+        </div>
+        <p class="positioning-text">
+          We listen first. Before recommending a single framework or technology, we take time to understand your agency's unique operating environment, constraints, and goals. Our advisors bring <strong>deep practitioner experience</strong> — and they stay engaged through the work, not just the kickoff.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Serve -->
+  <section class="serve">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">WHO WE SERVE</div>
+        <h2>Government technology leaders, at every level.</h2>
+      </div>
+      <div class="serve-grid">
+
+        <div class="serve-card">
+          <div class="serve-card-img"><img src="assets/img/state-local.jpg" alt="State and local government building" loading="lazy" /></div>
+          <div class="serve-card-body">
+            <div class="serve-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4"/><rect x="10" y="9" width="4" height="4" rx=".5"/></svg>
+            </div>
+            <h3>State &amp; Local Government</h3>
+            <p>Supporting CIOs and technology executives navigating modernization at the agency level — from strategy through execution.</p>
+            <div class="serve-tag">State · County · Municipal</div>
+          </div>
+        </div>
+
+        <div class="serve-card">
+          <div class="serve-card-img"><img src="assets/img/federal.jpg" alt="Federal government building" loading="lazy" /></div>
+          <div class="serve-card-body">
+            <div class="serve-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>Federal Agencies</h3>
+            <p>Bringing advisory rigor to complex federal IT environments — independent, objective, and built for the long-term mission.</p>
+            <div class="serve-tag">Civilian · Defense · IC</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisory Areas -->
+  <section class="advisory" id="advisory">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">WHERE WE FOCUS</div>
+        <h2>Our advisory areas.</h2>
+        <p>Reflecting the most pressing challenges facing government technology leaders today — not vendor checklists.</p>
+      </div>
+      <div class="advisory-grid">
+
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/zero-trust.jpg" alt="Network infrastructure cables" loading="lazy" /></div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div class="advisory-card-num">01 — Zero-Trust</div>
+            <h3>Zero-Trust Architecture</h3>
+            <p>Helping agencies develop and pressure-test zero-trust roadmaps grounded in your real infrastructure, not vendor blueprints.</p>
+          </div>
+        </article>
+
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/cyber.jpg" alt="Server rack in data center" loading="lazy" /></div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+            <div class="advisory-card-num">02 — Cyber</div>
+            <h3>Cybersecurity Readiness Assessments</h3>
+            <p>Rapid, independent assessments that surface your true risk posture and inform prioritized action — without the delay of a full audit cycle.</p>
+          </div>
+        </article>
+
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/ivv.jpg" alt="Professional team review meeting" loading="lazy" /></div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+            <div class="advisory-card-num">03 — IV&amp;V</div>
+            <h3>Independent Verification &amp; Validation</h3>
+            <p>Objective, senior-led oversight of major technology programs to protect your investment and keep delivery on track.</p>
+          </div>
+        </article>
+
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/ai-gov.jpg" alt="AI chip technology" loading="lazy" /></div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="advisory-card-num">04 — AI Governance</div>
+            <h3>AI Governance Frameworks</h3>
+            <p>Practical governance structures that help agencies deploy AI responsibly — balancing innovation, accountability, and compliance.</p>
+          </div>
+        </article>
+
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/data-ready.jpg" alt="Large scale data center equipment array" loading="lazy" /></div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <div class="advisory-card-num">05 — Data Readiness</div>
+            <h3>Data Readiness for AI Adoption</h3>
+            <p>Evaluating whether your agency's data assets, pipelines, and practices are ready to support AI — before you commit to a platform.</p>
+          </div>
+        </article>
+
+        <article class="advisory-card">
+          <div class="advisory-card-img"><img src="assets/img/stakeholder.jpg" alt="Professionals collaborating at table" loading="lazy" /></div>
+          <div class="advisory-card-body">
+            <div class="advisory-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="advisory-card-num">06 — Change Management</div>
+            <h3>Stakeholder Alignment &amp; Change Management</h3>
+            <p>Structured workshops and programs that build executive consensus, prepare your workforce, and sustain change across complex agency environments.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="how-inner">
+        <div class="how-left">
+          <div class="eyebrow on-dark">HOW WE WORK</div>
+          <h2>Senior-level from day one.</h2>
+          <p>Government technology decisions carry consequences that outlast any contract. We bring experienced advisors — not fresh consultants — who understand the constraints of the public sector and stay accountable through delivery.</p>
+          <div class="how-steps">
+            <div class="how-step">
+              <span class="how-step-num">01</span>
+              <div><h4>Listen before recommending</h4><p>We understand your agency's environment, constraints, and goals before suggesting a single framework.</p></div>
+            </div>
+            <div class="how-step">
+              <span class="how-step-num">02</span>
+              <div><h4>Independent, not vendor-aligned</h4><p>Our guidance is objective. We have no software to sell, no platform to push.</p></div>
+            </div>
+            <div class="how-step">
+              <span class="how-step-num">03</span>
+              <div><h4>Engaged through execution</h4><p>Our advisors stay in the work — not just the kickoff. From strategy through delivery.</p></div>
+            </div>
+            <div class="how-step">
+              <span class="how-step-num">04</span>
+              <div><h4>Memos, not 80-page PDFs</h4><p>Clear thinking, communicated clearly. Findings you can act on immediately.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="how-right">
+          <div class="how-principles">
+            <div class="eyebrow on-dark">OUR PRINCIPLES</div>
+            <div class="principle"><p class="principle-quote">"Strategy, modernization, and responsible AI as one practice — not three vendors."</p></div>
+            <div class="principle"><p class="principle-quote">"We leave when you don't need us."</p></div>
+            <div class="principle"><p class="principle-quote">"Trusted advisors for government's most complex technology decisions."</p></div>
+            <div class="principle"><p class="principle-quote">"Government technology should work for the people it serves."</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights -->
+  <section class="insights" id="insights">
+    <div class="container">
+      <div class="section-header split">
+        <div>
+          <div class="eyebrow">INSIGHTS</div>
+          <h2>What we're thinking about.</h2>
+        </div>
+        <a href="#" class="btn btn-outline-dark" style="flex-shrink:0;">All Insights →</a>
+      </div>
+      <div class="insights-grid">
+
+        <article class="insight-card">
+          <span class="insight-meta">BRIEF 001 · 6 MIN</span>
+          <h3>Why every state CIO needs an AI governance layer before the platforms arrive.</h3>
+          <p>The agencies moving fastest on AI adoption are also the ones most exposed. Governance isn't a brake — it's the foundation.</p>
+          <span class="insight-arrow">Read brief ↗</span>
+        </article>
+
+        <article class="insight-card">
+          <span class="insight-meta">BRIEF 002 · 8 MIN</span>
+          <h3>Zero-trust in state government: what the CISA framework actually requires you to do.</h3>
+          <p>Most agencies are still treating zero-trust as a vendor selection problem. It isn't. Here's what the hard work looks like.</p>
+          <span class="insight-arrow">Read brief ↗</span>
+        </article>
+
+        <article class="insight-card">
+          <span class="insight-meta">BRIEF 003 · 5 MIN</span>
+          <h3>The data problem hiding inside every AI readiness assessment.</h3>
+          <p>Before your agency commits to an AI platform, ask these four questions about your data. The answers will change the conversation.</p>
+          <span class="insight-arrow">Read brief ↗</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Strip -->
+  <section class="cta-strip" id="contact">
+    <div class="container">
+      <div class="eyebrow on-dark">START A CONVERSATION</div>
+      <h2>The technology decisions <span class="accent">you make today matter.</span></h2>
+      <p>Let's talk about where your agency is headed — and whether we're the right advisors to help you get there.</p>
+      <a href="mailto:hello@forwardedge.co" class="btn btn-gold" style="font-size:15px; padding:16px 30px;">Brief us &nbsp;↗</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo"><img src="assets/fe-lockup-paper.png" alt="ForwardEdge" /></div>
+          <p class="footer-tagline">Forward intelligence for the public sector.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#advisory">Advisory Areas</a>
+          <a href="#how">How We Work</a>
+          <a href="#insights">Insights</a>
+          <a href="#contact">Start a Conversation</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 ForwardEdge Advisory · Women-Owned · Minority-Led</span>
+        <span class="footer-coord">33.7490°N &nbsp;·&nbsp; 84.3880°W &nbsp;·&nbsp; ATL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+    closeBtn.addEventListener('click', closeMobileNav);
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    function isInInitialViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.advisory-card, .insight-card, .serve-card, .how-step').forEach(el => {
+      el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+      if (!isInInitialViewport(el)) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+      }
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
