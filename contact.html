@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Start a Conversation · Forward Edge</title>
+<link rel="icon" href="assets/fe-mark-black.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .contact-section { padding: clamp(56px, 8vw, 96px) 0 clamp(72px, 10vw, 128px); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  .contact-info h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+    margin-bottom: 20px;
+    max-width: 14ch;
+  }
+  .contact-info p { font-size: 16px; color: var(--color-slate); line-height: 1.6; max-width: 42ch; margin-bottom: 28px; }
+  .contact-info .side { border-top: 1px solid var(--color-cloud); }
+  .contact-info .side > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-cloud); }
+  .contact-info .side .val { font-weight: 700; color: var(--color-navy); font-size: 15px; }
+  .contact-info .side a.val { color: var(--color-navy); }
+  .contact-info .side a.val:hover { color: var(--color-gold-deep); }
+
+  .contact-form {
+    background: var(--color-cloud);
+    border-radius: var(--r-md);
+    padding: clamp(28px, 4vw, 44px);
+  }
+  .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .field label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-slate);
+  }
+  .field input,
+  .field textarea {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--color-navy);
+    background: var(--color-white);
+    border: 1px solid var(--color-mist);
+    border-radius: var(--r-sm);
+    padding: 12px 14px;
+    resize: vertical;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
+  .form-note { font-size: 12px; color: var(--color-slate); }
+  .form-status { font-size: 13px; color: var(--color-gold-deep); font-weight: 600; min-height: 18px; }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Forward Edge — home">
+      <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="advisory.html">Advisory</a>
+    <!--  <a href="how-we-work.html">Approach</a>
+      <a href="insights.html">Insights</a> -->
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="contact-section">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <h1>Start a <em>conversation</em>.</h1>
+      <p>
+        Tell us where your agency is headed and what's in the way. A senior advisor will
+        reply directly — no intake team, no junior triage.
+      </p>
+      <div class="side">
+        <div><span class="mono">Email</span><a class="val" href="mailto:kdougherty@forwardedge.us">kdougherty@forwardedge.us</a></div>
+        <div><span class="mono">Response time</span><span class="val">1–2 business days</span></div>
+        <div><span class="mono">Based</span><span class="val">Atlanta, GA</span></div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="field">
+          <label for="org">Agency / Organization</label>
+          <input type="text" id="org" name="org" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">What's on your mind?</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+      <div class="form-foot">
+        <span class="form-note">Submitting opens your email client, addressed to kdougherty@forwardedge.us.</span>
+      </div>
+      <div class="form-foot" style="margin-top:20px;">
+        <span class="form-status" id="formStatus"></span>
+        <button type="submit" class="btn btn-primary">Send<span class="btn-arrow">↗</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+        <p>Forward intelligence for the public sector.</p>
+        <div class="footer-coords">ATL · 33.7490°N · 84.3880°W</div>
+      </div>
+      <div class="footer-col">
+        <h4>Advisory</h4>
+        <ul>
+          <li><a href="advisory.html#zero-trust">Zero-Trust</a></li>
+          <li><a href="advisory.html#cyber">Cyber Readiness</a></li>
+          <li><a href="advisory.html#ivv">IV&amp;V</a></li>
+          <li><a href="advisory.html#ai-gov">AI Governance</a></li>
+          <li><a href="advisory.html#data">Data Readiness</a></li>
+          <li><a href="advisory.html#change">Change Management</a></li>
+          <li><a href="advisory.html#cost-op">Cost Optimization</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Start a Conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:kdougherty@forwardedge.us">kdougherty@forwardedge.us</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span class="mono">© 2026 Forward Edge Advisory · ATL</span>
+      <span class="mono">A WOMEN-OWNED · MINORITY-LED FIRM · LAUNCHING FALL '26</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const org = document.getElementById('org').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const subject = `Start a Conversation — ${name}${org ? ' (' + org + ')' : ''}`;
+    const bodyLines = [
+      message,
+      '',
+      '—',
+      `Name: ${name}`,
+      org ? `Organization: ${org}` : null,
+      `Email: ${email}`,
+      phone ? `Phone: ${phone}` : null,
+    ].filter(Boolean);
+
+    const mailto = `mailto:kdougherty@forwardedge.us?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    document.getElementById('formStatus').textContent = 'Opening your email client…';
+    window.location.href = mailto;
+  });
+</script>
+</body>
+</html>
