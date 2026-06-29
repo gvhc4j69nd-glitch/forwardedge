@@ -110,7 +110,7 @@ em { font-style: italic; }
   height: 76px;
   gap: 24px;
 }
-.nav-brand img { height: 48px; width: auto; }
+.nav-brand img { height: 72px; width: auto; }
 .nav-links {
   display: flex;
   align-items: center;
