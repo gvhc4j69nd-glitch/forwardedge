@@ -142,6 +142,7 @@
     .hero::before {
       content: "";
       position: absolute;
+      pointer-events: none;
       top: -120px; right: -120px;
       width: 480px; height: 480px;
       border-radius: 50%;
@@ -431,7 +432,9 @@
     }
     .cta-strip::before {
       content: "";
-      position: absolute; bottom: -160px; left: 50%;
+      position: absolute;
+      pointer-events: none;
+      bottom: -160px; left: 50%;
       transform: translateX(-50%);
       width: 600px; height: 600px;
       border-radius: 50%;
